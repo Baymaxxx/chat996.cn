@@ -187,6 +187,9 @@ pnpm dev
 #### Docker build & Run
 
 ```bash
+# 登录docker
+docker login
+
 docker build -t chatgpt-web .
 
 # 前台运行
