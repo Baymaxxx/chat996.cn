@@ -21,7 +21,7 @@ const ErrorCodeMessage: Record<string, string> = {
 
 dotenv.config()
 
-const timeoutMs: number = !isNaN(+process.env.TIMEOUT_MS) ? +process.env.TIMEOUT_MS : 30 * 1000
+const timeoutMs: number = !isNaN(+process.env.TIMEOUT_MS) ? +process.env.TIMEOUT_MS : 5 * 1000
 
 let apiModel: ApiModel
 
