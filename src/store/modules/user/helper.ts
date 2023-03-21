@@ -16,7 +16,7 @@ export function defaultSetting(): UserState {
   return {
     userInfo: {
       avatar: 'https://raw.githubusercontent.com/Chanzhaoyu/chatgpt-web/main/src/assets/avatar.jpg',
-      name: 'Dudu Club',
+      name: 'GPT996',
       description: 'Chat GPT-996的好帮手',
     },
   }
