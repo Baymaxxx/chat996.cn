@@ -105,7 +105,6 @@ async function onConversation() {
         options,
         signal: controller.signal,
         onDownloadProgress: ({ event }) => {
-          console.log(event, 'event')
           const xhr = event.target
           const { responseText } = xhr
           // Always process the final line
@@ -120,7 +119,7 @@ async function onConversation() {
               dataSources.value.length - 1,
               {
                 dateTime: new Date().toLocaleString(),
-                text: data.text === 'undefined' ? lastText + data.text : '官网API在维护，等下再来吧...',
+                text: lastText + data.text ?? '',
                 inversion: false,
                 error: false,
                 loading: false,
@@ -131,7 +130,7 @@ async function onConversation() {
 
             if (openLongReply && data.detail.choices[0].finish_reason === 'length') {
               options.parentMessageId = data.id
-              lastText = data.text === 'undefined' ? data.text : '官网API在维护，等下再来吧...',
+              lastText = data.text
               message = ''
               return fetchChatAPIOnce()
             }
