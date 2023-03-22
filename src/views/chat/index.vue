@@ -237,6 +237,7 @@ async function onRegenerate(index: number) {
         onDownloadProgress: ({ event }) => {
           const xhr = event.target
           const { responseText } = xhr
+          console.log(responseText, 'responseText')
           // Always process the final line
           const lastIndex = responseText.lastIndexOf('\n')
           let chunk = responseText
@@ -244,6 +245,15 @@ async function onRegenerate(index: number) {
             chunk = responseText.substring(lastIndex)
           try {
             const data = JSON.parse(chunk)
+            console.log(data, {
+                dateTime: new Date().toLocaleString(),
+                text: lastText + data.text ?? '',
+                inversion: false,
+                error: false,
+                loading: false,
+                conversationOptions: { conversationId: data.conversationId, parentMessageId: data.id },
+                requestOptions: { prompt: message, ...options },
+              })
             updateChat(
               +uuid,
               index,
